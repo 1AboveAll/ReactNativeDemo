@@ -1,6 +1,16 @@
 import React from 'react'
-import Login from './login'
-import AddMovie from './add_movie'
-import ViewMovies from './view_movies'
+import Login from './login/Login'
+import AddMovie from './add_movie/AddMovie'
+import ViewMovies from './view_movies/ViewMovies'
+import {color} from "./theme"
 
-import {createStackNavigator, createBottomTabNavigator} from 'react-navigation'
+import {createAppContainer,createStackNavigator, createBottomTabNavigator} from 'react-navigation'
+const Movies = createBottomTabNavigator({
+    Movies: {screen: ViewMovies},
+    Add: {screen: AddMovie}
+})
+
+const AppContainer = createAppContainer(Movies)
+
+
+export default AppContainer
