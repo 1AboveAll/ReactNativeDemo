@@ -3,7 +3,7 @@ import {BASE_URL} from './../url'
 
 export const onLogin = ({ email, password }) => {
 
-    var data = "email="+encodeURIComponent(email)+"&password="+encodeURIComponent(password);
+    var data = "email="+encodeURIComponent(email)+"&password="+password;
 
     return (dispatch) => {
         fetch(BASE_URL+"/users/authenticate", {
@@ -21,12 +21,30 @@ export const onLogin = ({ email, password }) => {
                         type: 'updateToken',
                         playload: response.data.token
                     })
-                    NavigationService.Logout('AddMovies');
+                    NavigationService.Logout('AddMovie');
                 }
             })
             .catch(error => console.error('Error:', error));
     };
 };
+
+export const onRegister = ({fullName,email,password}) => {
+    var data = "name="+encodeURIComponent(fullName)+"&email="+encodeURIComponent(email)+"&password="+password;
+    return (dispatch) => {
+        fetch(BASE_URL+"/users/register",{
+            method: "POST",
+            body: data,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(res => res.json())
+            .then(response => {
+                if(response.status == 'success'){
+                    dispatch(onLogin({email,password}))
+                }
+            }).catch(error => console.error('Error:',error))
+    }
+}
 
 export const onAddMovie = ({name,releaseOn,token}) => {
     var data = "name="+encodeURIComponent(name)+"&released_on="+releaseOn;

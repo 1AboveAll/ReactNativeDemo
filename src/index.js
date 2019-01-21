@@ -8,17 +8,18 @@ import {color} from "./theme"
 import {createAppContainer,createStackNavigator, createBottomTabNavigator} from 'react-navigation'
 
 
-const Tabbed = createBottomTabNavigator({
-    'Login': {screen: Login},
-    'Register': {screen: Register}
-})
+// const Tabbed = createBottomTabNavigator({
+//     'Login': {screen: Login},
+//     'Register': {screen: Register}
+// })
 
 
 
 const Container = createStackNavigator({
-    Home: { screen: AddMovie },
-    AddMovies: {screen: Tabbed}
-    
+    Home: { screen: Login },
+    Register: {screen: Register},
+    AddMovie: {screen: AddMovie}
+        
     }, {
       headerMode: 'none',
       navigationOptions: {

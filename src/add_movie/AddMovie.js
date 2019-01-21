@@ -8,6 +8,14 @@ class AddMovie extends React.Component {
 
     onAdd(){ 
         const { name, releaseOn,token } = this.props;
+        if(name === ''){
+            console.warn("Email Empty")
+            return
+        }
+        if(releaseOn === ''){
+            console.warn("Password Empty")
+            return
+        }
         this.props.onAddMovie({ name, releaseOn,token });
     }
 

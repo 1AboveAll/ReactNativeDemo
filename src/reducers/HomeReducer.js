@@ -1,14 +1,19 @@
 const INITIAL_STATE = {
-    email: 'rawath54@gmail.com',
-    password: '1234567',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNDM0NDdkZWJjZDg2MmM0MDJlNjJjZiIsImlhdCI6MTU0ODA1NzIyNSwiZXhwIjoxNTQ4MDYwODI1fQ.4ZfXozFE8q5D6lCM0N0JzbjBXEFwfF6qpbMHRXC7FKI',
-    //token: ''
+    fullName: '',
+    email: '',
+    password: '',
+    //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNDM0NDdkZWJjZDg2MmM0MDJlNjJjZiIsImlhdCI6MTU0ODA1NzIyNSwiZXhwIjoxNTQ4MDYwODI1fQ.4ZfXozFE8q5D6lCM0N0JzbjBXEFwfF6qpbMHRXC7FKI',
+    token: '',
     name: '',
     releaseOn: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
+
+        case 'updateFullName':{
+            return { ...state, fullName: action.playload };
+        }
 
         case 'updateEmail':
             return { ...state, email: action.playload };

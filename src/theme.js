@@ -7,6 +7,14 @@ const color = {
 }
 
 const styles = StyleSheet.create({
+
+    registerText: {
+        color: 'white',
+        marginLeft: 16,
+        marginRight: 16,
+        marginBottom: 8,
+    },
+
     heading: {
         color: 'white',
         fontWeight: 'bold',

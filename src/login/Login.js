@@ -1,17 +1,32 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { styles } from '../theme';
 import { connect } from "react-redux";
 import {
     onChangeInputFields,
     onLogin
 } from './../action';
+import NavigationService from "./../../NavigationService"
 
 class Login extends React.Component {
+
     Login() {
         const { email, password } = this.props;
+        if(email === ''){
+            console.warn("Email Empty")
+            return
+        }
+        if(password === ''){
+            console.warn("Password Empty")
+            return
+        }
         this.props.onLogin({ email, password });
     }
+
+    onRegister(){
+        NavigationService.navigate('Register')
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -26,6 +41,8 @@ class Login extends React.Component {
                 <TextInput
                     placeholder='Password'
                     style={styles.input}
+                    secureTextEntry = {true}
+                    password = {true}
                     onChangeText={(text) => this.props.onChangeInputFields('updatePassword', text)}
                 />
 
@@ -36,6 +53,10 @@ class Login extends React.Component {
                         </Text>
                     </View>
 
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress = {this.onRegister.bind(this)}>
+                    <Text style={styles.registerText}>Don't Have an Account? Register Here</Text>
                 </TouchableOpacity>
 
             </View>
